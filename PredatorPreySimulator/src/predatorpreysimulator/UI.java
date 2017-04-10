@@ -208,7 +208,7 @@ public class UI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bad time number", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+        setVisible(false);
         
          
          
