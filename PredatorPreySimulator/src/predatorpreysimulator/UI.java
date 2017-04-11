@@ -32,7 +32,7 @@ public class UI extends javax.swing.JFrame {
     private int _gridColumn;
     private int _timeStep;
     private boolean close = false;
-    private gird grid = new gird();
+    private gird grid;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -213,7 +213,7 @@ public class UI extends javax.swing.JFrame {
         }
         setClose();
         setVisible(false);
-        grid.setGrid(_gridRow, _gridColumn);
+        grid = new gird(_gridRow,_gridColumn);
         grid.setOpen();
         
         

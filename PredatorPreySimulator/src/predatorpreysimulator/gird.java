@@ -5,6 +5,7 @@
  */
 package predatorpreysimulator;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,20 +30,38 @@ public class gird extends javax.swing.JFrame {
     private JButton butw = new JButton("w");
     int row;
     int column;
+    private JButton butt[][];
+    private Cells cells[][];
     public gird() {
         initComponents();
-        
+        row = 0;
+        column = 0;
         
     }
     public gird(int row, int column)
     {
+        initComponents();
         this.row = row;
         this.column = column;
+        cells = new Cells[row][column];
+        butt = new JButton[row][column];
+        frame.setSize(500, 500);
         panel.setLayout(new GridLayout(row,column));
+        for(int i = 0; i < row; i++)
+        {
+//            butt[i] = new JButton();
+//            butt[i].setBackground(Color.white);
+            for(int j = 0; j < column; j++)
+            {
+                cells[i][j] = new Cells();
+                cells[i][j].setBackground(Color.yellow);
+               // cells[i][j].setVisible(true);
+                panel.add(cells[i][j]);
+            }
+            
+        }
         frame.add(panel);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+     
     }
     
     
@@ -79,20 +98,12 @@ public class gird extends javax.swing.JFrame {
     
     public void setOpen()
     {
-        JButton butt[] = new JButton[8];
-        frame.setSize(800, 800);
-        panel.setLayout(new GridLayout(row,column));
-       // panel.setSize(700, 700);
-        for(int i = 0; i < butt.length; i++)
-        {
-            butt[i] = new JButton("butt");
-            panel.add(butt[i]);
-        }
-        frame.add(panel);
-        
-      //  frame.pack();
-        //frame.setVisible(false);
+        //frame.pack();
         frame.setVisible(true);
+        panel.setVisible(true);
+        for(int i =0; i < row; i++)
+            for(int j= 0; j < column; j++)
+                cells[i][j].setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     /**
