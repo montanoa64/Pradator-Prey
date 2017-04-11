@@ -18,6 +18,15 @@ public class PredatorPreySimulator {
         // TODO code application logic here
         UI ui = new UI();
         ui.setVisible(true);
+        gird grid = new gird();
+        boolean yes = true;
+        //grid.setOpen();
+//        if(ui.getClose() == true)
+//            yes = true;
+//        if(yes == true)
+//        {
+//            grid.setOpen();
+//        }
     }
     
 }
