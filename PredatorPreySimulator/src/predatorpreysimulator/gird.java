@@ -31,7 +31,7 @@ public class gird extends javax.swing.JFrame {
     int row;
     int column;
     private JButton butt[][];
-    private Cells cells[][];
+    public Cells cells[][];
     public gird() {
         initComponents();
         row = 0;
@@ -55,12 +55,15 @@ public class gird extends javax.swing.JFrame {
             {
                 cells[i][j] = new Cells();
                 cells[i][j].setBackground(Color.yellow);
+                cells[i][j].setXY(i, j);
                // cells[i][j].setVisible(true);
                 panel.add(cells[i][j]);
             }
             
         }
+        //cells[2][2].setNotEmpty();
         frame.add(panel);
+        
      
     }
     
@@ -99,11 +102,14 @@ public class gird extends javax.swing.JFrame {
     public void setOpen()
     {
         //frame.pack();
-        frame.setVisible(true);
-        panel.setVisible(true);
         for(int i =0; i < row; i++)
             for(int j= 0; j < column; j++)
                 cells[i][j].setVisible(true);
+        panel.setVisible(true);
+        frame.setVisible(true);
+        
+        
+        
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     /**
@@ -138,6 +144,7 @@ public class gird extends javax.swing.JFrame {
             public void run() {
 //                new gird().setVisible(false);
                   new gird().setVisible(true);
+                  
      
             }
         });

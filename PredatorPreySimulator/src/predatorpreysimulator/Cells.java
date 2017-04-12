@@ -7,6 +7,12 @@ package predatorpreysimulator;
 
 //import javax.swing.JButton;
 
+import java.awt.Image;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+
 /**
  *
  * @author ecko0_000
@@ -47,13 +53,28 @@ public class Cells extends javax.swing.JButton {
         return y;
     }
     
-    public void setNotEmpty()
+    public void setNotEmpty(Animal animal)
     {
+        File file = new File("test/predator.jpg");
+        try
+        {
+            Image img = ImageIO.read(file);
+            img = img.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+            setIcon(new ImageIcon(img));
+        }
+        catch(Exception ex)
+        {System.out.println(ex);}
+        animal.setXY(getX(), getY());
         isEmpty = false;
     }
     
     public boolean getIsEmpty()
     {
         return isEmpty;
+    }
+    
+    public void setEmpty()
+    {
+        isEmpty = true;
     }
 }
