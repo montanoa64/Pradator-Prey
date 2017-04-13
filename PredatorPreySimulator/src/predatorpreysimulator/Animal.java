@@ -9,7 +9,10 @@ package predatorpreysimulator;
  *
  * @author ecko0_000
  */
+import java.awt.Image;
 import java.util.Random;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Animal {
     private int x;
@@ -22,6 +25,7 @@ public class Animal {
     private boolean isDead;
     private Random rand = new Random();
     private int n;
+    private String tag;
     
     public Animal()
     {
@@ -32,8 +36,16 @@ public class Animal {
         right=2;
         down=3;
         left=4;
-        
+        tag="";
         isDead = false;
+    }
+    public Image getImg()
+    {
+        return null;
+    }
+    public String getTag()
+    {
+        return tag;
     }
     public int getUp()
     {

@@ -5,6 +5,10 @@
  */
 package predatorpreysimulator;
 
+import java.awt.Image;
+import java.io.File;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author ecko0_000
@@ -20,6 +24,7 @@ public class Prey extends Animal {
     private Animal rAnimal=null;
     private boolean breed;
     private String tag;
+    private Image img;
     
     public Prey()
     {
@@ -32,7 +37,21 @@ public class Prey extends Animal {
         x = super.getX();
         y = super.getY();
         breed = false;
-        tag="";
+        tag="prey";
+        File file = new File("test/prey.jpg");
+        try
+        {
+            img = ImageIO.read(file);
+            //img = img.getScaledInstance(this.getHeight(), this.getWidth(), Image.SCALE_DEFAULT);
+            //setIcon(new ImageIcon(img));
+        }
+        catch(Exception ex)
+        {System.out.println(ex);}
+    }
+    @Override
+    public Image getImg()
+    {
+        return img;
     }
     //private Animal rAnimal = new Prey();
     public void move(Cells [][] cell, int row, int column)
@@ -129,7 +148,7 @@ public class Prey extends Animal {
     {
         //rAnimal = null;
         Animal animal = new Prey();
-        if(super.getCount() >= 1)
+        if(super.getCount() >= 5)
         {
 //            x = super.getX();
 //            y = super.getY();

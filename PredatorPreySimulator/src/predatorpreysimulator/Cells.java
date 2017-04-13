@@ -70,10 +70,10 @@ public class Cells extends javax.swing.JButton {
     }
     public void setNotEmpty(Animal animal)
     {
-        File file = new File("test/predator.jpg");
+        //File file = new File("test/predator.jpg");
         try
         {
-            Image img = ImageIO.read(file);
+            Image img = animal.getImg();
             img = img.getScaledInstance(this.getHeight(), this.getWidth(), Image.SCALE_DEFAULT);
             setIcon(new ImageIcon(img));
         }
