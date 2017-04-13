@@ -9,6 +9,8 @@ package predatorpreysimulator;
  *
  * @author ecko0_000
  */
-public class Predator {
+public class Predator extends Animal {
+    
+    
     
 }

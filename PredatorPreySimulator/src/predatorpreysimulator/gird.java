@@ -26,11 +26,11 @@ public class gird extends javax.swing.JFrame {
     private JFrame frame = new JFrame("Predator-Prey Simulator");
     private JPanel panel = new JPanel();
     private JTable table = new JTable();
-    private JButton but = new JButton("one");
-    private JButton butw = new JButton("w");
+//    private JButton but = new JButton("one");
+//    private JButton butw = new JButton("w");
     int row;
     int column;
-    private JButton butt[][];
+//    private JButton butt[][];
     public Cells cells[][];
     public gird() {
         initComponents();
@@ -44,7 +44,7 @@ public class gird extends javax.swing.JFrame {
         this.row = row;
         this.column = column;
         cells = new Cells[row][column];
-        butt = new JButton[row][column];
+//        butt = new JButton[row][column];
         frame.setSize(500, 500);
         panel.setLayout(new GridLayout(row,column));
         for(int i = 0; i < row; i++)

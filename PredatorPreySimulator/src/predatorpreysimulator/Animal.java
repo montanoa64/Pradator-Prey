@@ -35,7 +35,26 @@ public class Animal {
         
         isDead = false;
     }
-    
+    public int getUp()
+    {
+        return up;
+    }
+    public int getRight()
+    {
+        return right;
+    }
+    public int getDown()
+    {
+        return down;
+    }
+    public int getLeft()
+    {
+        return left;
+    }
+    public int getRand()
+    {
+        return rand.nextInt(4)+1;
+    }
     public void setXY(int x, int y)
     {
         this.x = x;
@@ -51,6 +70,14 @@ public class Animal {
     {
         return x;
     }
+    public void increaseCount()
+    {
+        count++;
+    }
+    public int getCount()
+    {
+        return count;
+    }
     
     public int getY()
     {
@@ -61,9 +88,29 @@ public class Animal {
     {
         return isDead;
     }
-    
-    public void move(Cells [][] cell, int row, int column)
+    public void  move(Cells [][] cell, int row, int column)
+    {}
+    public void breed(Cells [][] cell, int row, int column)
+    {}
+    public void setCountToZero()
     {
+        count = 0;
+    }
+    public Animal getBreed()
+    {
+        return null;
+    }
+    public boolean isBreed()
+    {
+        return false;
+    }
+    public void setAnimal(Animal animal)
+    {
+        //this.rAnimal = animal;
+    }
+    /*public void move(Cells [][] cell, int row, int column)
+    {
+        breed(cell,row,column);
         if(x == 0)
         {
            if(y == column-1)
@@ -352,6 +399,235 @@ public class Animal {
                     }
                 }
         }
-    }
-    
+    }*/
+    /*
+    public void breed(Cells [][] cell, int row, int column)
+    {
+        if(count > 3)
+        {
+            Animal animal = new Animal();
+            if(x == 0)
+            {
+                if(y==0)
+                {
+                    if(cell[x+1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x+1, y);
+                        cell[x+1][y].setNotEmpty(animal);
+                        count = 0;
+                    }   
+                    else if(cell[x][y+1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y+1);
+                        cell[x][y+1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                    else
+                    {
+                        count =0;
+                    }
+                }//
+                else if(y == column-1)
+                {
+                    if(cell[x+1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x+1, y);
+                        cell[x+1][y].setNotEmpty(animal);
+                        count = 0;
+                    }   
+                    else if(cell[x][y-1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y-1);
+                        cell[x][y-1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                    else
+                    {
+                        count =0;
+                    }
+                }
+                else
+                {
+                   if(cell[x+1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x+1, y);
+                        cell[x+1][y].setNotEmpty(animal);
+                        count = 0;
+                    } 
+                   else if(cell[x][y-1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y-1);
+                        cell[x][y-1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                   else if(cell[x][y+1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y+1);
+                        cell[x][y+1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                   else
+                    {
+                        count =0;
+                    }
+                }
+            }
+                
+                
+            
+            
+            else if(x==row-1)
+            {
+                if(y==0)
+                {
+                   if(cell[x-1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x-1, y);
+                        cell[x-1][y].setNotEmpty(animal);
+                        count = 0;
+                    } 
+                   else if(cell[x][y+1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y+1);
+                        cell[x][y+1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                   else
+                    {
+                       count =0;
+                    }
+                }
+                else if(y == column-1)
+                {
+                    if(cell[x-1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x-1, y);
+                        cell[x-1][y].setNotEmpty(animal);
+                        count = 0;
+                    } 
+                    else if(cell[x][y-1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y-1);
+                        cell[x][y-1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                    else
+                    {
+                        count=0;
+                    }
+                }
+                else
+                {
+                    if(cell[x-1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x-1, y);
+                        cell[x-1][y].setNotEmpty(animal);
+                        count = 0;
+                    }
+                    else if(cell[x][y-1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y-1);
+                        cell[x][y-1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                    else if(cell[x][y+1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y+1);
+                        cell[x][y+1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                }
+                        
+                        
+            }
+            else if(y==0)
+            {
+                if(cell[x-1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x-1, y);
+                        cell[x-1][y].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else if(cell[x+1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x+1, y);
+                        cell[x+1][y].setNotEmpty(animal);
+                        count = 0;
+                    } 
+                else if(cell[x][y+1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y+1);
+                        cell[x][y+1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else
+                {
+                    count = 0;
+                }
+            }
+            else if(y == column-1)
+            {
+                if(cell[x-1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x-1, y);
+                        cell[x-1][y].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else if(cell[x+1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x+1, y);
+                        cell[x+1][y].setNotEmpty(animal);
+                        count = 0;
+                    } 
+                else if(cell[x][y-1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y-1);
+                        cell[x][y-1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else
+                {
+                    count =0;
+                }
+            }
+            else
+            {
+                if(cell[x-1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x-1, y);
+                        cell[x-1][y].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else if(cell[x+1][y].getIsEmpty()==true)
+                    {
+                        animal.setXY(x+1, y);
+                        cell[x+1][y].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else if(cell[x][y-1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y-1);
+                        cell[x][y-1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else if(cell[x][y+1].getIsEmpty() == true)
+                    {
+                        animal.setXY(x, y+1);
+                        cell[x][y+1].setNotEmpty(animal);
+                        count = 0;
+                    }
+                else
+                {
+                    count=0;
+                }
+            }
+        }
+            
+    }*/
 }
+    
+
