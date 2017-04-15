@@ -58,7 +58,7 @@ public class Prey extends Animal {
     {
 //        x = super.getX();
 //        y = super.getY();
-        breed(cell,row,column);
+        
         rand = super.getRand();
         if(rand == up)
         {
@@ -132,7 +132,7 @@ public class Prey extends Animal {
                 super.increaseCount();
             }
         }
-        
+        breed(cell,row,column);
         
     }
     public void setXY(int x, int y)
@@ -140,15 +140,22 @@ public class Prey extends Animal {
         this.x = x;
         this.y = y;
     }
+    @Override
     public void setAnimal(Animal animal)
     {
         this.rAnimal = animal;
     }
+    @Override
+    public void setBreedF()
+    {
+        breed=false;
+    }
+    @Override
     public void breed(Cells [][] cell, int row, int column)
     {
         //rAnimal = null;
         Animal animal = new Prey();
-        if(super.getCount() >= 5)
+        if(super.getCount() % 3 ==0 && super.getCount() >0)
         {
 //            x = super.getX();
 //            y = super.getY();
@@ -192,7 +199,7 @@ public class Prey extends Animal {
                 {
 //                    cell[x][y].setEmpty();
 //                    y++;
-                    animal.setXY(x-1, y);
+                    animal.setXY(x, y+1);
                     cell[x][y+1].setNotEmpty(animal);
                     setAnimal(animal);
                     breed = true;
@@ -215,7 +222,7 @@ public class Prey extends Animal {
                 {
 //                    cell[x][y].setEmpty();
 //                    x++;
-                    animal.setXY(x-1, y);
+                    animal.setXY(x+1, y);
                     cell[x+1][y].setNotEmpty(animal);
                     setAnimal(animal);
                     breed = true;
@@ -238,7 +245,7 @@ public class Prey extends Animal {
                 {
 //                    cell[x][y].setEmpty();
 //                    y--;
-                    animal.setXY(x-1, y);
+                    animal.setXY(x, y-1);
                     cell[x][y-1].setNotEmpty(animal);
                     setAnimal(animal);
                     breed = true;
@@ -246,6 +253,7 @@ public class Prey extends Animal {
                 }
             }
         }
+        
     }
     public Animal getBreed()
     {
@@ -254,6 +262,10 @@ public class Prey extends Animal {
     public boolean isBreed()
     {
         return breed;
+    }
+    public String getTag()
+    {
+        return tag;
     }
     
     

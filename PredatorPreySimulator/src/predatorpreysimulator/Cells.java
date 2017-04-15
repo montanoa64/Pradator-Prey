@@ -24,6 +24,7 @@ public class Cells extends javax.swing.JButton {
     private int y;
     private boolean isEmpty;
     private String tag;
+    public Animal animalCell;
     
     public Cells()
     {
@@ -31,6 +32,7 @@ public class Cells extends javax.swing.JButton {
         x=0;
         y=0;
         tag="";
+        animalCell = null;
     }
     
     public Cells(int x, int y, boolean isEmpty,String tag)
@@ -65,8 +67,12 @@ public class Cells extends javax.swing.JButton {
         
     }
     public void setY(int y)
-    {
+    {//
         this.y = y;
+    }
+    public void setTag(Animal animal)
+    {
+        tag = animal.getTag();
     }
     public void setNotEmpty(Animal animal)
     {
@@ -79,8 +85,21 @@ public class Cells extends javax.swing.JButton {
         }
         catch(Exception ex)
         {System.out.println(ex);}
+        if("prey".equals(animal.getTag()))
+        {
+            animalCell = animal;
+        }
+//        if(animal.getTag().equals("Predator") && animal.getIsDead() == true)
+//        {
+//            animalCell = animal;
+//        }
+        setTag(animal);
         animal.setXY(getX(), getY());
         isEmpty = false;
+    }
+    public Animal getAnimal()
+    {
+        return animalCell;
     }
     
     public boolean getIsEmpty()
@@ -93,5 +112,6 @@ public class Cells extends javax.swing.JButton {
     {
         setIcon(null);
         isEmpty = true;
+        tag="";
     }
 }

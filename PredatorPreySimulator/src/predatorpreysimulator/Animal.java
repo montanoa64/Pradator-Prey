@@ -38,7 +38,7 @@ public class Animal {
         left=4;
         tag="";
         isDead = false;
-    }
+    }//
     public Image getImg()
     {
         return null;
@@ -111,6 +111,10 @@ public class Animal {
     public Animal getBreed()
     {
         return null;
+    }
+    public void setBreedF()
+    {
+        
     }
     public boolean isBreed()
     {

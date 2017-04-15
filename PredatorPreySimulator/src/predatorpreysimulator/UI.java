@@ -225,7 +225,7 @@ public class UI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bad time number", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        System.out.println("close");
+     //   System.out.println("close");
         close = true;
         //setVisible(false);
         //grid = new gird(_gridRow,_gridColumn);
