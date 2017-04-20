@@ -27,6 +27,8 @@ public class UI extends javax.swing.JFrame {
     public UI() {
         close = false;
         initComponents();
+        //grid.setLocation(p);
+        setLocation(700,250);
     }
 
     /**

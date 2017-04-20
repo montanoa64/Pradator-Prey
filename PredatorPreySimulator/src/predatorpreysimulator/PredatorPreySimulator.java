@@ -7,7 +7,9 @@ package predatorpreysimulator;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.Random;
 
 /**
@@ -26,10 +28,15 @@ public class PredatorPreySimulator {
         ui.setVisible(true);
         gird grid;
         Random rand = new Random();
-        ArrayList<Animal> listprey =new ArrayList<Animal>();
-        ArrayList<Animal> listprey2 =new ArrayList<Animal>();
-        ArrayList<Animal> listPredator = new ArrayList<Animal>();
-        ArrayList<Animal> listPredator2 = new ArrayList<Animal>();
+        LinkedList<Animal> listprey =new LinkedList<Animal>();
+        
+     //   ArrayList<Animal> listprey2 =new ArrayList<Animal>();
+        LinkedList<Animal> listPredator = new LinkedList<Animal>();
+        ListIterator iter;
+        ListIterator iter2;
+        //LinkedList<Animal> listPredator2 = new LinkedList<Animal>();
+//        Iterator<Animal> iter = listPredator.iterator();
+//        Iterator<Animal> iter2 = listprey.iterator();
         int row;
         int column;
         while(true)
@@ -79,55 +86,77 @@ public class PredatorPreySimulator {
                     {
                         try
                         {
-                            Thread.sleep(0000);
+                            Thread.sleep(1000);
                             
                             
                    
                             for(Animal obj:listPredator)
                                 obj.move(grid.cells, ui.getGridRow(), ui.getGridColumn());
-                            
-                            for(Animal obj:listPredator)
+                            iter = listPredator.listIterator();
+                            while(iter.hasNext())
                             {
-                                if(obj.isBreed() == true)
+                                Animal data = (Animal) iter.next();
+                                if(data.isBreed() == true)
                                 {
-                                    //grid.cells[rand.nextInt(ui.getGridRow()-1)][rand.nextInt(ui.getGridColumn()-1)].setNotEmpty(obj);
-                                    // n = obj.getBreed();
-                                    listPredator2.add(obj.getBreed());
-                                    obj.setBreedF();
+                                    iter.add(data.getBreed());
+                                    data.setBreedF();
                                 }
                             }
-                            for(Animal n:listPredator2)
+//                            for(Animal obj:listPredator)
+//                            {
+//                                if(obj.isBreed() == true)
+//                                {
+//                                    //grid.cells[rand.nextInt(ui.getGridRow()-1)][rand.nextInt(ui.getGridColumn()-1)].setNotEmpty(obj);
+//                                    // n = obj.getBreed();
+//                                    //listPredator2.add(obj.getBreed());
+//                                    listPredator.add(obj.getBreed());
+//                                    obj.setBreedF();
+//                                }
+//                            }
+//                            for(Animal n:listPredator2)
+//                            {
+//                                if(n != null)
+//                                {
+//                                    listPredator.add(n);
+//                                }
+//                            }
+//                            listPredator2.clear();
+                            iter = listPredator.listIterator();
+                            while(iter.hasNext())
                             {
-                                if(n != null)
+                                Animal data =(Animal) iter.next();
+                                if(data.getIsDead() == true)
                                 {
-                                    listPredator.add(n);
+                                    grid.cells[data.getX()][data.getY()].setEmpty();
+                                    iter.remove();
+                                    data = null;
                                 }
-                            }
-                            listPredator2.clear();
-                            
-                            for(Animal obj:listPredator)
                                 
-                            {
-                                if(obj.getIsDead() == true)
-                                {
-                                    grid.cells[obj.getX()][obj.getY()].setEmpty();
-                                    obj = null;
-                                }
-                                if(obj != null)
-                                {
-                                    listPredator2.add(obj);
-                                }
+                                
                             }
-                            listPredator.clear();
+//                            for(Animal obj:listPredator)
+//                                
+//                            {
+//                                if(obj.getIsDead() == true)
+//                                {
+//                                    grid.cells[obj.getX()][obj.getY()].setEmpty();
+//                                    listPredator.remove(obj);
+//                                }
+//                                if(obj != null)
+//                                {
+//                                    listPredator2.add(obj);
+//                                }
+                         //   }
+//                            listPredator.clear();
                             //listprey.clear();
-                            for(Animal obj:listPredator2)
-                            {
-                                if(obj != null)
-                                {
-                                    listPredator.add(obj);
-                                }
-                            }
-                            listPredator2.clear();
+//                            for(Animal obj:listPredator2)
+//                            {
+//                                if(obj != null)
+//                                {
+//                                    listPredator.add(obj);
+//                                }
+//                            }
+//                            listPredator2.clear();
                             
                             
                             
@@ -137,44 +166,68 @@ public class PredatorPreySimulator {
                             
                             for(Animal obj:listprey)
                                 obj.move(grid.cells, ui.getGridRow(), ui.getGridColumn());
-                            for(Animal obj:listprey)
+                            iter2 = listprey.listIterator();
+                            while(iter2.hasNext())
                             {
-                                if(obj.isBreed() == true)
+                                Animal data = (Animal) iter2.next();
+                                if(data.isBreed() == true)
                                 {
-//                                    grid.cells[rand.nextInt(ui.getGridRow()-1)][rand.nextInt(ui.getGridColumn()-1)].setNotEmpty(obj);
-                                    // n = obj.getBreed();
-                                    listprey2.add(obj.getBreed());
-                                    obj.setBreedF();
+                                    iter2.add(data.getBreed());
+                                    data.setBreedF();
+                                }
+                                
+                            }
+//                            for(Animal obj:listprey)
+//                            {
+//                                if(obj.isBreed() == true)
+//                                {
+////                                    grid.cells[rand.nextInt(ui.getGridRow()-1)][rand.nextInt(ui.getGridColumn()-1)].setNotEmpty(obj);
+//                                    // n = obj.getBreed();
+//                                   // listprey2.add(obj.getBreed());
+//                                    listprey.add(obj.getBreed());
+//                                    obj.setBreedF();
+//                                }
+//                            }
+                            iter2 = listprey.listIterator();
+                            while(iter2.hasNext())
+                            {
+                                Animal data =(Animal) iter2.next();
+                                if(data.getIsDead() == true)
+                                {
+                                    grid.cells[data.getX()][data.getY()].setEmpty();
+                                    iter2.remove();
+                                    data = null;
                                 }
                             }
-                            for(Animal n:listprey2)
-                            {
-                                if(n != null)
-                                {
-                                    listprey.add(n);
-                                }
-                            }
-                            listprey2.clear();
-                            for(Animal obj:listprey)
-                            {
-                                if(obj.getIsDead() == true)
-                                {
-                                    obj = null;
-                                }
-                                if(obj != null)
-                                {
-                                    listprey2.add(obj);
-                                }
-                            }
-                            listprey.clear();
-                            for(Animal obj:listprey2)
-                            {
-                                if(obj != null)
-                                {
-                                    listprey.add(obj);
-                                }
-                            }
-                            listprey2.clear();
+//                            for(Animal n:listprey2)
+//                            {
+//                                if(n != null)
+//                                {
+//                                    listprey.add(n);
+//                                }
+//                            }
+//                            listprey2.clear();
+//                            for(Animal obj:listprey)
+//                            {
+//                                if(obj.getIsDead() == true)
+//                                {
+//                                    grid.cells[obj.getX()][obj.getY()].setEmpty();
+//                                    listprey.remove(obj);
+//                                }
+//                                if(obj != null)
+//                                {
+//                                    listprey2.add(obj);
+//                                }
+                            //}
+//                            listprey.clear();
+//                            for(Animal obj:listprey2)
+//                            {
+//                                if(obj != null)
+//                                {
+//                                    listprey.add(obj);
+//                                }
+//                            }
+//                            listprey2.clear();
                                 
 //                                animal.move(grid.cells, ui.getGridRow(), ui.getGridColumn());
 //                                animal2.move(grid.cells, ui.getGridRow(), ui.getGridColumn());

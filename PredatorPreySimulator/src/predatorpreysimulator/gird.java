@@ -5,6 +5,8 @@
  */
 package predatorpreysimulator;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -26,6 +28,7 @@ public class gird extends javax.swing.JFrame {
     private JFrame frame = new JFrame("Predator-Prey Simulator");
     private JPanel panel = new JPanel();
     private JTable table = new JTable();
+    private JPanel panel2 = new JPanel();
 //    private JButton but = new JButton("one");
 //    private JButton butw = new JButton("w");
     int row;
@@ -45,8 +48,13 @@ public class gird extends javax.swing.JFrame {
         this.column = column;
         cells = new Cells[row][column];
 //        butt = new JButton[row][column];
-        frame.setSize(500, 500);
+        frame.setLayout(new BorderLayout());
+        frame.setSize(700, 700);
+        frame.setLocation(500, 250);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel.setLayout(new GridLayout(row,column));
+        panel2.setLayout(new FlowLayout());
+        //
         for(int i = 0; i < row; i++)
         {
 //            butt[i] = new JButton();
@@ -62,7 +70,8 @@ public class gird extends javax.swing.JFrame {
             
         }
         //cells[2][2].setNotEmpty();
-        frame.add(panel);
+        frame.add(panel, BorderLayout.CENTER);
+        frame.add(panel2, BorderLayout.SOUTH);
         
      
     }
